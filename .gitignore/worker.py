@@ -23,8 +23,8 @@ def check(s,new):
         if s[i]=='4':
             new[5]=1
         if s[i]=='a' or s[i]=='A':
-            if s[i+1]=='r':
-                if s[i+2]=='c':
+            if s[i+1]=='r' or s[i+1]='R':
+                if s[i+2]=='c' or s[i+2]==:
                     new[1]=1
         if s[i]=='r' or s[i]=='R':
             if s[i+1]=='e':
@@ -33,12 +33,7 @@ def check(s,new):
 
 
 def clear(pseudo):
-    for i in range(5):
-        G1[i]=-1
-        G2[i]=-1
-    n=len(Autres)
-    for i in range(n):
-        del(Autres[0])
+
     for i in range(len(L)):
         if L[i][0]==pseudo:
             del(L[i])
@@ -46,6 +41,12 @@ def clear(pseudo):
             return
 
 def rempli_groupe():
+    for i in range(5):
+            G1[i]=-1
+            G2[i]=-1
+        n=len(Autres)
+        for i in range(n):
+            del(Autres[0])
     for i in range(len(L)):
         mis=False
         for j in [4,1,0,3,2]:
@@ -84,6 +85,23 @@ def affiche():
             AutresA.append(L[i][0])
     return [GA1,GA2,AutresA]
 
+def affiche():
+    GA1=[]
+    GA2=[]    
+    AutresA=[]
+    for i in range(5):
+        GA1.append(roles[i])       
+        if i==-1:
+            GA1.append("\n")
+        else:
+            GA1.append(L[G1[i]][0]+"\n")
+    for i in range(5):
+        GA2.append(roles[i])       
+        if i==-1:
+            GA2.append("\n")
+        else:
+            GA2.append(L[G2[i]][0]+"\n")
+    return [GA1,GA2,AutresA]
 
 
 ########################################
@@ -124,12 +142,7 @@ async def on_message(message):
             else:
                 await client.send_message(message.channel,"clear si tu veut modif t'es deja inscrit")
                 return
-        for i in range(5):
-            G1[i]=-1
-            G2[i]=-1
-        n=len(Autres)
-        for i in range(n):
-            del(Autres[0])
+        
             
         rempli_groupe()
         print("l",L,"g1",G1)

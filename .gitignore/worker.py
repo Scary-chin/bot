@@ -9,7 +9,7 @@ L=[] #liste des [pseudos,red,archi,2,3,4]
 G1=[-1,-1,-1,-1,-1]
 G2=[-1,-1,-1,-1,-1]
 Autres=[]
-
+roles=['red','archi','2','3','4']
 
 
 
@@ -22,11 +22,11 @@ def check(s,new):
             new[4]=1
         if s[i]=='4':
             new[5]=1
-        if s[i]=='a':
+        if s[i]=='a' or s[i]=='A':
             if s[i+1]=='r':
                 if s[i+2]=='c':
                     new[1]=1
-        if s[i]=='r':
+        if s[i]=='r' or s[i]=='R':
             if s[i+1]=='e':
                 new[2]=1
     return new
